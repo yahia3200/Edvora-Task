@@ -1,9 +1,14 @@
 import styles from "../styles/SelectList.module.css";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
 
 const SelectList = ({ header, items, setState }) => {
   return (
-    <div>
-      <select
+    <FormControl fullWidth>
+      <InputLabel>{header}</InputLabel>
+      <Select
         defaultValue=""
         name={header}
         id={header}
@@ -12,17 +17,18 @@ const SelectList = ({ header, items, setState }) => {
           setState && setState(e.target.value);
         }}
         className={styles.selectList}
+        label={header}
       >
-        <option value="" disabled hidden>
-          {header}
-        </option>
+        <MenuItem disabled value="">
+          <em>{header}</em>
+        </MenuItem>
         {items.map((item, index) => (
-          <option value={item} key={index} className={styles.listOption}>
+          <MenuItem value={item} key={index} className={styles.listOption}>
             {item}
-          </option>
+          </MenuItem>
         ))}
-      </select>
-    </div>
+      </Select>
+    </FormControl>
   );
 };
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ProductsList from "../components/ProductsList";
 import Sidebar from "../components/Sidebar";
 import Head from "next/head";
+import StyledEngineProvider from "@mui/material/StyledEngineProvider";
 
 export const getStaticProps = async () => {
   const res = await fetch("https://assessment-edvora.herokuapp.com");
@@ -26,24 +27,26 @@ export default function Home({ products }) {
       <Head>
         <title>Edvora</title>
       </Head>
-      <div className="App">
-        {products && <Sidebar products={products} />}
-        <main>
-          <h1>Edvora</h1>
-          <h2>Products</h2>
-          {brands &&
-            brands.map((brand, index) => (
-              <div key={index}>
-                <ProductsList
-                  brandName={brand}
-                  cards={products.filter(
-                    (product) => product["brand_name"] === brand
-                  )}
-                />
-              </div>
-            ))}
-        </main>
-      </div>
+      <StyledEngineProvider injectFirst>
+        <div className="App">
+          {products && <Sidebar products={products} />}
+          <main>
+            <h1>Edvora</h1>
+            <h2>Products</h2>
+            {brands &&
+              brands.map((brand, index) => (
+                <div key={index}>
+                  <ProductsList
+                    brandName={brand}
+                    cards={products.filter(
+                      (product) => product["brand_name"] === brand
+                    )}
+                  />
+                </div>
+              ))}
+          </main>
+        </div>
+      </StyledEngineProvider>
     </>
   );
 }

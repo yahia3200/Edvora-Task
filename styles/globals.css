@@ -52,3 +52,16 @@ main h2 {
     padding-left: 20px;
   }
 }
+
+.MuiSelect-select {
+  color: #ffffff;
+  padding: 0;
+}
+
+.MuiSelect-icon {
+  color: #a5a5a5;
+}
+
+.MuiInputLabel-root {
+  color: #a5a5a5;
+}

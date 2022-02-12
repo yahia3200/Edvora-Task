@@ -1,11 +1,16 @@
 .card {
-  background-color: #232323;
+  background-color: hsl(0, 0%, 14%);
   padding: 10px 12px;
   border-radius: 4.68775px;
   min-width: 210px;
   scroll-snap-align: start;
   scroll-snap-stop: normal;
   scroll-margin: 20px;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: hsl(0, 0%, 20%);
 }
 
 .card img {

@@ -7,7 +7,7 @@ export default function ProductsList({ brandName, cards }) {
     <div className="products-list">
       <div className="cards-container">
         <h1 className="list-header">{brandName}</h1>
-        <div className="cards-region">
+        <div className="cards-region" id={brandName}>
           {cards.map((card, index) => (
             <div key={index}>
               <Card cardInfo={card} />
@@ -20,7 +20,7 @@ export default function ProductsList({ brandName, cards }) {
         alt="arrow"
         className="arrow"
         onClick={() => {
-          document.getElementsByClassName("cards-region")[0].scrollLeft += 200;
+          document.getElementById(`${brandName}`).scrollLeft += 200;
         }}
       />
     </div>
