@@ -1,0 +1,42 @@
+.card {
+  background-color: #232323;
+  padding: 10px 12px;
+  border-radius: 4.68775px;
+  min-width: 210px;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  scroll-margin: 20px;
+}
+
+.card img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  margin-bottom: 13px;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.card p {
+  margin-bottom: 13px;
+  white-space: nowrap;
+}
+.card-main {
+  display: flex;
+}
+
+.card-middle {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.card-middle :first-child {
+  margin-right: 10px;
+}
+
+.info-text {
+  font-size: 13px;
+  line-height: 16px;
+
+  color: rgba(255, 255, 255, 0.6);
+}

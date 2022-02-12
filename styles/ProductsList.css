@@ -1,0 +1,41 @@
+.products-list {
+  align-items: center;
+  margin-bottom: 45px;
+  display: flex;
+}
+
+.products-list h1 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(203, 203, 203, 0.5);
+}
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+}
+
+.cards-region {
+  background-color: #131313;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.cards-region::-webkit-scrollbar {
+  display: none;
+}
+
+.arrow {
+  margin-top: 50px;
+  margin-left: 30px;
+  cursor: pointer;
+}

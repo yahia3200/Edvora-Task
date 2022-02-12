@@ -1,0 +1,15 @@
+.selectList {
+  border: none;
+  background-color: #232323;
+  border-radius: 4.68775px;
+  color: #ffffff;
+  padding: 13px 8px;
+  font-size: 17px;
+  line-height: 20px;
+  margin-bottom: 13px;
+  width: 100%;
+}
+
+.listOption {
+  border: none;
+}

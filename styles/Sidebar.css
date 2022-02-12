@@ -1,0 +1,19 @@
+.sidebar {
+  min-width: 228px;
+  height: 300px;
+  padding: 25px;
+  background-color: #131313;
+  border-radius: 15px;
+}
+
+.sidebar-header {
+  color: #a5a5a5;
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 24px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid #cbcbcb;
+  margin-bottom: 36px;
+}
