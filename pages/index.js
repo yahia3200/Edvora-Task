@@ -13,7 +13,11 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ products }) {
+  const [currentPro, setCurrentPro] = useState("");
+  const [currentState, setCurrentState] = useState("");
+  const [currentCity, setCurrentCity] = useState("");
   const [brands, setBrands] = useState(null);
+
   useEffect(() => {
     const brands_set = new Set();
     products.forEach((product) => {
@@ -22,6 +26,25 @@ export default function Home({ products }) {
     setBrands([...brands_set]);
   }, [products]);
 
+  useEffect(() => {
+    const brands_set = new Set();
+    if (!currentPro) {
+      products.forEach((product) => {
+        brands_set.add(product["brand_name"]);
+      });
+      setBrands([...brands_set]);
+    } else if (currentPro && !currentState && !currentCity) {
+      products
+        .filter((product) => {
+          return product["brand_name"] === currentPro;
+        })
+        .forEach((product) => {
+          brands_set.add(product["brand_name"]);
+        });
+      setBrands([...brands_set]);
+    }
+  }, [products, currentPro, currentState, currentCity]);
+
   return (
     <>
       <Head>
@@ -29,7 +52,17 @@ export default function Home({ products }) {
       </Head>
       <StyledEngineProvider injectFirst>
         <div className="App">
-          {products && <Sidebar products={products} />}
+          {products && (
+            <Sidebar
+              products={products}
+              currentPro={currentPro}
+              setCurrentPro={setCurrentPro}
+              currentState={currentState}
+              setCurrentState={setCurrentState}
+              currentCity={currentCity}
+              setCurrentCity={setCurrentCity}
+            />
+          )}
           <main>
             <h1>Edvora</h1>
             <h2>Products</h2>
@@ -41,6 +74,9 @@ export default function Home({ products }) {
                     cards={products.filter(
                       (product) => product["brand_name"] === brand
                     )}
+                    product={currentPro}
+                    state={currentState}
+                    city={currentCity}
                   />
                 </div>
               ))}

@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import SelectList from "./SelectList";
-const Sidebar = ({ products }) => {
+const Sidebar = ({
+  products,
+  currentPro,
+  setCurrentPro,
+  currentState,
+  setCurrentState,
+  currentCity,
+  setCurrentCity,
+}) => {
   const [proList, setProList] = useState(null);
   const [statesList, setStatesList] = useState(null);
   const [citesList, setCitesList] = useState(null);
-
-  const [currentPro, setCurrentPro] = useState(null);
-  const [currentState, setCurrentState] = useState(null);
 
   // adding initial values to States and Cites
   useEffect(() => {
@@ -14,7 +19,7 @@ const Sidebar = ({ products }) => {
     const statesNames = new Set();
     const citesNames = new Set();
     products.forEach((element) => {
-      productsNames.add(element["product_name"]);
+      productsNames.add(element["brand_name"]);
       statesNames.add(element["address"]["state"]);
       citesNames.add(element["address"]["city"]);
     });
@@ -29,7 +34,7 @@ const Sidebar = ({ products }) => {
       const statesNames = new Set();
       products
         .filter((product) => {
-          return product["product_name"] === currentPro;
+          return product["brand_name"] === currentPro;
         })
         .forEach((element) => {
           statesNames.add(element["address"]["state"]);
@@ -45,7 +50,7 @@ const Sidebar = ({ products }) => {
       products
         .filter((product) => {
           return (
-            product["product_name"] === currentPro &&
+            product["brand_name"] === currentPro &&
             product["address"]["state"] === currentState
           );
         })
@@ -63,17 +68,29 @@ const Sidebar = ({ products }) => {
         <SelectList
           header={"Products"}
           items={proList}
-          setState={setCurrentPro}
+          state={currentPro}
+          setter={setCurrentPro}
+          setState={setCurrentState}
+          setCity={setCurrentCity}
         />
       )}
       {statesList && (
         <SelectList
           header={"State"}
           items={statesList}
-          setState={setCurrentState}
+          state={currentState}
+          setter={setCurrentState}
+          setCity={setCurrentCity}
         />
       )}
-      {citesList && <SelectList header={"City"} items={citesList} />}
+      {citesList && (
+        <SelectList
+          header={"City"}
+          items={citesList}
+          state={currentCity}
+          setter={setCurrentCity}
+        />
+      )}
     </div>
   );
 };

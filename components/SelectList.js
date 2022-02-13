@@ -4,22 +4,28 @@ import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 
-const SelectList = ({ header, items, setState }) => {
+const SelectList = ({ header, items, state, setter, setState, setCity }) => {
   return (
     <FormControl fullWidth>
       <InputLabel>{header}</InputLabel>
       <Select
-        defaultValue=""
         name={header}
         id={header}
         onChange={(e) => {
-          console.log(`${header} changed`);
-          setState && setState(e.target.value);
+          setter && setter(e.target.value);
+          if (setter && header === "Products") {
+            setState("");
+            setCity("");
+          }
+          if (setter && header === "State") {
+            setCity("");
+          }
         }}
         className={styles.selectList}
         label={header}
+        value={state}
       >
-        <MenuItem disabled value="">
+        <MenuItem value="">
           <em>{header}</em>
         </MenuItem>
         {items.map((item, index) => (
